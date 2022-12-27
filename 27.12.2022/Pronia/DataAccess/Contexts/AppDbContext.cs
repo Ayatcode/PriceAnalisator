@@ -10,5 +10,5 @@ public class AppDbContext:DbContext
     }
     public DbSet<SlideItem> SlideItems { get; set; } = null!;
     public DbSet<ShippingItem> ShippingItems { get; set; }= null!;
-    public DbSet<ShippingItem> Tryd { get; set; }= null!;
+    
 }

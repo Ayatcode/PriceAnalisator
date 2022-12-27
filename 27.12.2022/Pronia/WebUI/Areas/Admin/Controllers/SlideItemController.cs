@@ -119,15 +119,26 @@ namespace WebUI.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, ShippingItem item)
+        public async Task<IActionResult> Update(int id, SlideItem item,SlideCreateVM result)
         {
             if (id != item.Id) return BadRequest(item.Id);
             if (!ModelState.IsValid) return View(item);
             var model = await _repository.GetAsync(id);
             if (model == null) { return NotFound(); }
+            
+            var filename = string.Empty;
+            try
+            {
+                filename = await result.Photo.CopyFileAsync(_env.WebRootPath, "assets", "images", "website-images");
+            }
+            catch (Exception)
+            {
+
+                return View(item);
+            }
             model.Title = item.Title;
             model.Description = item.Description;
-            model.Photo = item.Photo;
+            model.Photo = filename;
             _repository.Update(model);
             await _repository.SaveAsync();
             return RedirectToAction(nameof(Index));

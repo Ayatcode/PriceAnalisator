@@ -1,9 +1,6 @@
 ﻿using Core.Entities;
-using DataAccess.Contexts;
 using DataAccess.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using NuGet.Configuration;
 
 namespace WebUI.Areas.Admin.Controllers;
 

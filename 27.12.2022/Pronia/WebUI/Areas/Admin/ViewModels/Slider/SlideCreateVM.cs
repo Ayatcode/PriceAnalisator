@@ -6,11 +6,12 @@ using RequiredAttribute = System.ComponentModel.DataAnnotations.RequiredAttribut
 
 namespace WebUI.Areas.Admin.ViewModels.Slider;
 
-public class SlideCreateVM
+public class SlideCreateVM:IEntity
 {
    
     
-    [Required]
+    public int Id { get ; set ; }
+    
     public IFormFile? Photo { get; set; }
     [MaxLength(100)]
     public string? Offer { get; set; }
