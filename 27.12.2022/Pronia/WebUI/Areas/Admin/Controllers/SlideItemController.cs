@@ -22,10 +22,10 @@ namespace WebUI.Areas.Admin.Controllers
             
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewBag.Count = _count;
-            return View(_repository);
+            return View(await _repository.GetAllAsync());
         }
         public async Task<IActionResult> Detail(int id)
         {
@@ -108,6 +108,30 @@ namespace WebUI.Areas.Admin.Controllers
             _repository.Delete(slide);
             await _repository.SaveAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Update(int id)
+        {
+            var model = await _repository.GetAsync(id);
+            if (model == null) { return NotFound(); }
+            return View(model);
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int id, ShippingItem item)
+        {
+            if (id != item.Id) return BadRequest(item.Id);
+            if (!ModelState.IsValid) return View(item);
+            var model = await _repository.GetAsync(id);
+            if (model == null) { return NotFound(); }
+            model.Title = item.Title;
+            model.Description = item.Description;
+            model.Photo = item.Photo;
+            _repository.Update(model);
+            await _repository.SaveAsync();
+            return RedirectToAction(nameof(Index));
+
         }
     }
 }

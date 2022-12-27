@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QK0aXC6eVr6C5Owd3qZZxIKxJjiGBJ37aeibYbwHNLhvTd1yZkBvFNlCqApH+uIsGo1H2e9NKJYOdOcGgGQPgA==",
+  "dgSpecHash": "4QUoYB/iRTSn9uXfs74ncUe9e0MuUtJQd8tBBkakLi4QGNflxTz2UYoCbI2k+EIjDscVfXunQBKJOCXKTm2ezA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ayat\\Desktop\\C#\\BB101-19_12_2022\\PrProject\\WebUI\\WebUI.csproj",
+  "projectFilePath": "C:\\Users\\Ayat\\Desktop\\C#\\27.12.2022\\Pronia\\WebUI\\WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ayat\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Ayat\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
