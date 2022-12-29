@@ -1,6 +1,7 @@
 ﻿using Core.Entities;
 using DataAccess.Contexts;
 using DataAccess.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using WebUI.Areas.Admin.ViewModels.Slider;
@@ -9,6 +10,7 @@ using WebUI.Utilities;
 namespace WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class SlideItemController : Controller
     {
         private readonly ISlideItems _repository;

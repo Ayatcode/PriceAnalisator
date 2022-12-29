@@ -1,7 +1,9 @@
 ﻿using Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration.UserSecrets;
 using WebUI.ViewModels;
+using static WebUI.Utilities.Helper;
 
 namespace WebUI.Controllers
 {
@@ -9,11 +11,13 @@ namespace WebUI.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Register()
@@ -43,6 +47,7 @@ namespace WebUI.Controllers
                 }
                 return View(registerViewModel);
             }
+            await _userManager.AddToRoleAsync(appUser, RoleType.Member.ToString());
             return RedirectToAction(nameof(Login));
         }
 
@@ -88,8 +93,7 @@ namespace WebUI.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> LogOut()
         {
             if (User.Identity.IsAuthenticated)
@@ -99,6 +103,78 @@ namespace WebUI.Controllers
             }
 
             return BadRequest();
+        }
+
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (!ModelState.IsValid) { return View(model); }
+
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null) { ModelState.AddModelError("Email", "Email not found"); return View(model); }
+
+            string token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            string? link = Url.Action("ResetPassword", "Auth", new {userId=user.Id,tok= token},HttpContext.Request.Scheme);
+
+            return Json(link);
+        }
+
+
+        public async Task<IActionResult> ResetPassword(string userId, string token)
+        {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token)) { return BadRequest(); }
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) { return NotFound();}
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model,string userId,string token)
+        {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token)) { return BadRequest(); }
+            if(!ModelState.IsValid) { return View(model); }
+
+            var user = await _userManager.FindByNameAsync(userId);
+            if(user == null) { return NotFound(); }
+
+            var result=await _userManager.ResetPasswordAsync(user, token,model.NewPassword);
+            if (!result.Succeeded) 
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                    
+
+                }
+                return View();
+            }
+            return RedirectToAction(nameof(Login));
+        }
+
+        public async Task<IActionResult> CreateRoles()
+        {
+            foreach (var role in Enum.GetValues(typeof(RoleType)))
+            {
+                if(!await _roleManager.RoleExistsAsync(role.ToString()))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(role.ToString()));
+                }
+            }
+            
+           
+
+            return RedirectToAction("Index","Home");
         }
     }
     

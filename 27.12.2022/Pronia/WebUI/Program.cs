@@ -27,7 +27,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
     opt.Lockout.DefaultLockoutTimeSpan= TimeSpan.FromMinutes(30);
     opt.Lockout.AllowedForNewUsers= true;
 
-}).AddEntityFrameworkStores<AppDbContext>();
+}).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddSession(opt =>
 {

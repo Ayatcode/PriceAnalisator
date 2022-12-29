@@ -4,8 +4,10 @@ using WebUI.ViewModels;
 
 namespace WebUI.Controllers;
 
+
 public class HomeController : Controller
 {
+    
     private AppDbContext _context;
     public HomeController(AppDbContext context)
     {

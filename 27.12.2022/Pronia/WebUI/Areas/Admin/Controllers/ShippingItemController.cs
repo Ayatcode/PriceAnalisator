@@ -1,10 +1,12 @@
 ﻿using Core.Entities;
 using DataAccess.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebUI.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize(Roles ="Admin")]
 public class ShippingItemController : Controller
 {
     private readonly IShippingItemRepository _repository;
