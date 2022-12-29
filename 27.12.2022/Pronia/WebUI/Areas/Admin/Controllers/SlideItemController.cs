@@ -20,6 +20,7 @@ namespace WebUI.Areas.Admin.Controllers
             _repository = repository;
             _env = env;
             
+            
         }
 
         public async Task<IActionResult> Index()
@@ -125,8 +126,10 @@ namespace WebUI.Areas.Admin.Controllers
             if (!ModelState.IsValid) return View(item);
             var model = await _repository.GetAsync(id);
             if (model == null) { return NotFound(); }
-            
             var filename = string.Empty;
+            if(result.Photo != null)
+            {
+
             try
             {
                 filename = await result.Photo.CopyFileAsync(_env.WebRootPath, "assets", "images", "website-images");
@@ -136,9 +139,14 @@ namespace WebUI.Areas.Admin.Controllers
 
                 return View(item);
             }
+            }
             model.Title = item.Title;
             model.Description = item.Description;
-            model.Photo = filename;
+            if (filename != null)
+            {
+                model.Photo = filename;
+            }
+            else { model.Photo = item.Photo; }
             _repository.Update(model);
             await _repository.SaveAsync();
             return RedirectToAction(nameof(Index));

@@ -34,3 +34,5 @@ C:\Users\Ayat\Desktop\C#\27.12.2022\Pronia\Core\obj\Debug\net6.0\Core.dll
 C:\Users\Ayat\Desktop\C#\27.12.2022\Pronia\Core\obj\Debug\net6.0\refint\Core.dll
 C:\Users\Ayat\Desktop\C#\27.12.2022\Pronia\Core\obj\Debug\net6.0\Core.pdb
 C:\Users\Ayat\Desktop\C#\27.12.2022\Pronia\Core\obj\Debug\net6.0\ref\Core.dll
+C:\Users\Ayat\Desktop\C#\27.12.2022\Pronia\Core\bin\Debug\net6.0\Core.runtimeconfig.json
+C:\Users\Ayat\Desktop\C#\27.12.2022\Pronia\Core\obj\Debug\net6.0\Core.genruntimeconfig.cache
