@@ -11,7 +11,7 @@ using System.Data;
 namespace JuanProj.Areas.Areas.Controllers;
 
 [Area("Admin")]
-//[Authorize(Roles = "Admin")]
+//[Authorize(Roles = "Admin","Moderator")]
 public class SlideItemController : Controller
 {
     private readonly ISlideItemsRepository _repository;

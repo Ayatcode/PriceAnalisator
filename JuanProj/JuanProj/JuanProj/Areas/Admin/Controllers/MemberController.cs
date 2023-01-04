@@ -5,6 +5,7 @@ using JuanProj.Areas.Admin.Models.CreateVM;
 using JuanProj.Areas.Admin.Models.Member;
 using JuanProj.Areas.Admin.Models.UpdateVm;
 using JuanProj.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ using static JuanProj.Utilities.Helper;
 namespace JuanProj.Areas.Admin.Controllers;
 
 [Area("Admin")]
+//[Authorize(Roles ="Admin")]
 public class MemberController : Controller
 {
     private readonly UserManager<AppUser> _userManager;
