@@ -1,0 +1,40 @@
+﻿@using JuanProj.Areas.Admin.Models.UpdateVm;
+@model UpdateVM
+@{
+    ViewData["Title"] = "Update";
+}
+
+ <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Create Shipping</h4>
+                  <form class="forms-sample" method="post"  enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">Username</label>
+                      <input  asp-for="UserName" class="form-control"  placeholder="Username">
+                      <span class="text-danger" asp-validation-for="UserName">  </span>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">Email</label>
+                      <input asp-for="Email" class="form-control"  placeholder="Email">
+                      <span class="text-danger" asp-validation-for="Email">  </span>
+                    </div>
+                     <div class="form-group" style="width:100%">
+                         <select asp-for="DisplayRole" style="width:100%">
+                             <option>Moderator</option>
+                             <option>Member</option>
+                         </select>
+                      <span class="text-danger" asp-validation-for="Email">  </span>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">Password</label>
+                      <input asp-for="Password" class="form-control"  placeholder="Password">
+                      <span class="text-danger" asp-validation-for="Password">  </span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a asp-action="Index" class="btn btn-light">Cancel</a>
+                  </form>
+                </div>
+              </div>
+  </div>

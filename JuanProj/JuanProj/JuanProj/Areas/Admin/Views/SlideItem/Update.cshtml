@@ -1,0 +1,35 @@
+﻿@model SlideCreateVm
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+  <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Update Shipping</h4>
+                  <img src="~/assets/images/website-images/@Model.Image" height="50px"/>
+                  <form class="forms-sample" method="post">
+                   <input type="file" asp-for="Image" class="form-control"  placeholder="Image">
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">Image</label>
+                      <input asp-for="Image" class="form-control"  placeholder="Image">
+                      <span class="text-danger" asp-validation-for="Image">  </span>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">Title</label>
+                      <input asp-for="Title" class="form-control"  placeholder="Title">
+                      <span class="text-danger" asp-validation-for="Title">  </span>
+                    </div>
+                    <div class="form-group">
+                    <label for="exampleInputUsername1">Subtitle</label>
+                      <input asp-for="Subtitle" class="form-control"  placeholder="Description">
+                      <span class="text-danger" asp-validation-for="Subtitle">  </span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a asp-action="Index" class="btn btn-light">Cancel</a>
+                  </form>
+                </div>
+              </div>
+  </div>

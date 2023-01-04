@@ -1,0 +1,51 @@
+﻿@using JuanProj.Areas.Admin.Models.Member;
+@model IEnumerable<MembersVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Shipping Items</h4>
+                  <a asp-action="Create">Create Slide</a>
+                  <p class="card-description">
+                    Add class <code>.table-striped</code>
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                           Name
+                          </th>
+                          <th>
+                            Role
+                          </th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach (var slide in Model)
+                        {
+                                        <tr>
+                                      
+                                      <td>
+                                    @slide.UserName
+                                      </td>
+                                      <td>
+                                    @slide.Position
+                                      </td>
+                                      <td>
+                                       <a asp-action="Detail" asp-route-id="@slide.Id"  > Detail</a>
+                                       <a asp-action="Update" asp-route-id="@slide.Id" >Update</a>
+                                       <a asp-action="Delete" asp-route-id="@slide.Id" >Delete</a>
+                                      </td>
+                                    </tr>
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
