@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\PriceAnalisator.Pres.props" />
+</Project>

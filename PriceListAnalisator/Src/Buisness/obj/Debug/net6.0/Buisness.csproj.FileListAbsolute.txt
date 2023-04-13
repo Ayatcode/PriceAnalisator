@@ -1,0 +1,17 @@
+D:\C#\PriceListAnalisator\Src\Buisness\bin\Debug\net6.0\Buisness.deps.json
+D:\C#\PriceListAnalisator\Src\Buisness\bin\Debug\net6.0\Buisness.dll
+D:\C#\PriceListAnalisator\Src\Buisness\bin\Debug\net6.0\Buisness.pdb
+D:\C#\PriceListAnalisator\Src\Buisness\bin\Debug\net6.0\Core.dll
+D:\C#\PriceListAnalisator\Src\Buisness\bin\Debug\net6.0\DAL.dll
+D:\C#\PriceListAnalisator\Src\Buisness\bin\Debug\net6.0\DAL.pdb
+D:\C#\PriceListAnalisator\Src\Buisness\bin\Debug\net6.0\Core.pdb
+D:\C#\PriceListAnalisator\Src\Buisness\obj\Debug\net6.0\Buisness.csproj.AssemblyReference.cache
+D:\C#\PriceListAnalisator\Src\Buisness\obj\Debug\net6.0\Buisness.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#\PriceListAnalisator\Src\Buisness\obj\Debug\net6.0\Buisness.AssemblyInfoInputs.cache
+D:\C#\PriceListAnalisator\Src\Buisness\obj\Debug\net6.0\Buisness.AssemblyInfo.cs
+D:\C#\PriceListAnalisator\Src\Buisness\obj\Debug\net6.0\Buisness.csproj.CoreCompileInputs.cache
+D:\C#\PriceListAnalisator\Src\Buisness\obj\Debug\net6.0\Buisness.csproj.CopyComplete
+D:\C#\PriceListAnalisator\Src\Buisness\obj\Debug\net6.0\Buisness.dll
+D:\C#\PriceListAnalisator\Src\Buisness\obj\Debug\net6.0\refint\Buisness.dll
+D:\C#\PriceListAnalisator\Src\Buisness\obj\Debug\net6.0\Buisness.pdb
+D:\C#\PriceListAnalisator\Src\Buisness\obj\Debug\net6.0\ref\Buisness.dll
